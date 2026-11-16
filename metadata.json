@@ -1,0 +1,8 @@
+{
+  "name": "Remix EXTRAVASACIONES: Guía Rápida de Actuación",
+  "description": "Herramienta clínica de consulta inmediata para enfermería de Urgencias sobre el manejo de extravasaciones de medicamentos no citostáticos. Basada en la Guía del Servicio de Farmacia del CHUA (2019).",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
