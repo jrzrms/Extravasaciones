@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Medication, TemperatureType } from '../types/clinical.ts';
 import { 
   Search, 
@@ -34,6 +34,10 @@ export const MedicationCatalogView: React.FC<MedicationCatalogViewProps> = ({
   const [search, setSearch] = useState('');
   const [activeFilter, setActiveFilter] = useState<FilterCategory>(initialFilter as FilterCategory);
   const [selectedLetter, setSelectedLetter] = useState<string>('ALL');
+
+  useEffect(() => {
+    setActiveFilter((initialFilter as FilterCategory) || 'ALL');
+  }, [initialFilter]);
 
   // Available unique initial letters from medications
   const alphabet = useMemo(() => {

@@ -26,6 +26,7 @@ interface HomeViewProps {
   medications: Medication[];
   onSelectMedication: (medication: Medication) => void;
   onTabChange: (tab: NavTab) => void;
+  onQuickFilter?: (filter: 'ALL' | 'FRIO' | 'CALOR' | 'ANTIDOTO' | 'VESICANTE') => void;
   recentMedicationIds: string[];
   onClearRecent: () => void;
   onOpenDocumentInfo: () => void;
@@ -35,6 +36,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
   medications,
   onSelectMedication,
   onTabChange,
+  onQuickFilter,
   recentMedicationIds,
   onClearRecent,
   onOpenDocumentInfo
@@ -181,25 +183,25 @@ export const HomeView: React.FC<HomeViewProps> = ({
         <div className="flex flex-wrap items-center justify-center gap-2 mt-4 text-xs font-medium">
           <span className="text-slate-500">Accesos rápidos:</span>
           <button
-            onClick={() => onTabChange('MEDICAMENTOS')}
+            onClick={() => onQuickFilter ? onQuickFilter('FRIO') : onTabChange('MEDICAMENTOS')}
             className="px-3 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 transition-colors"
           >
             ❄️ Necesidad de Frío ({coldCount})
           </button>
           <button
-            onClick={() => onTabChange('MEDICAMENTOS')}
+            onClick={() => onQuickFilter ? onQuickFilter('CALOR') : onTabChange('MEDICAMENTOS')}
             className="px-3 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 transition-colors"
           >
             🔥 Necesidad de Calor ({heatCount})
           </button>
           <button
-            onClick={() => onTabChange('MEDICAMENTOS')}
+            onClick={() => onQuickFilter ? onQuickFilter('ANTIDOTO') : onTabChange('MEDICAMENTOS')}
             className="px-3 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 transition-colors"
           >
             💉 Con Antídoto ({antidoteCount})
           </button>
           <button
-            onClick={() => onTabChange('MEDICAMENTOS')}
+            onClick={() => onQuickFilter ? onQuickFilter('VESICANTE') : onTabChange('MEDICAMENTOS')}
             className="px-3 py-1 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 text-slate-700 transition-colors"
           >
             ⚠️ Vesicantes ({vesicantCount})

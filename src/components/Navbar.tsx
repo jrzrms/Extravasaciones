@@ -25,6 +25,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   activeTab,
   onTabChange
 }) => {
+  const [logoError, setLogoError] = React.useState(false);
+
   return (
     <>
       {/* Top Bar */}
@@ -37,13 +39,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="flex items-center gap-2 sm:gap-2.5 text-left text-white hover:text-purple-200 transition-colors whitespace-nowrap shrink-0"
             title="Hospital de la Santa Creu i Sant Pau · Inicio"
           >
-            <span className="bg-white rounded-lg px-2 py-1 shadow-xs flex items-center justify-center shrink-0">
-              <img
-                src="/assets/aistudio/logo_HSP_afddfc38.jpg"
-                alt="Hospital de la Santa Creu i Sant Pau · Campus Salut Barcelona"
-                referrerPolicy="no-referrer"
-                className="h-6 sm:h-8 w-auto object-contain"
-              />
+            <span className="bg-white rounded-lg px-2 py-1 shadow-xs flex items-center justify-center shrink-0 min-h-[28px] sm:min-h-[36px]">
+              {!logoError ? (
+                <img
+                  src={`${import.meta.env.BASE_URL}assets/aistudio/logo_HSP_afddfc38.jpg`}
+                  alt="Hospital de la Santa Creu i Sant Pau · Campus Salut Barcelona"
+                  referrerPolicy="no-referrer"
+                  onError={() => setLogoError(true)}
+                  className="h-6 sm:h-8 w-auto object-contain"
+                />
+              ) : (
+                <span className="text-[11px] sm:text-xs font-extrabold text-purple-950 px-1 tracking-tight">
+                  HOSPITAL SANT PAU
+                </span>
+              )}
             </span>
             <span className="hidden xl:flex w-8 h-8 rounded-lg bg-purple-600 items-center justify-center text-white shadow-xs shrink-0">
               <span className="text-xl font-black leading-none">+</span>

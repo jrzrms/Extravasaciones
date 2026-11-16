@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MASTER_ANTIDOTES } from '../data/antidotesData.ts';
 import { Medication } from '../types/clinical.ts';
 import { 
@@ -20,14 +20,28 @@ import {
 interface AntidotesViewProps {
   medications: Medication[];
   onSelectMedication: (medication: Medication) => void;
+  initialAntidoteName?: string;
 }
 
 export const AntidotesView: React.FC<AntidotesViewProps> = ({
   medications,
-  onSelectMedication
+  onSelectMedication,
+  initialAntidoteName
 }) => {
   const [selectedAntidoteId, setSelectedAntidoteId] = useState<string>('all');
-  const [searchAntidote, setSearchAntidote] = useState<string>('');
+  const [searchAntidote] = useState<string>('');
+
+  useEffect(() => {
+    if (!initialAntidoteName) {
+      setSelectedAntidoteId('all');
+      return;
+    }
+    const q = initialAntidoteName.toLowerCase();
+    const matched = MASTER_ANTIDOTES.find(
+      (a) => q.includes(a.name.toLowerCase().split(' ')[0]) || a.name.toLowerCase().includes(q)
+    );
+    setSelectedAntidoteId(matched ? matched.id : 'all');
+  }, [initialAntidoteName]);
 
   const filteredAntidotes = MASTER_ANTIDOTES.filter((ant) => {
     if (selectedAntidoteId !== 'all' && ant.id !== selectedAntidoteId) return false;
