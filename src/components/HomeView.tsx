@@ -348,14 +348,14 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       {/* Institutional Document Control & Source Banner */}
       <section className="max-w-5xl mx-auto px-4">
-        <div className="p-4 bg-slate-900 text-slate-200 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-800">
+        <div className="p-4 bg-purple-950 text-purple-100 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 border border-purple-800/80 shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center shrink-0">
-              <BookOpen className="w-5 h-5 text-sky-400" />
+            <div className="w-10 h-10 rounded-xl bg-purple-900/90 border border-purple-800/70 flex items-center justify-center shrink-0">
+              <BookOpen className="w-5 h-5 text-purple-300" />
             </div>
             <div className="text-xs">
               <div className="font-bold text-white">Hospital de la Santa Creu i Sant Pau · Servicio de Farmacia</div>
-              <div className="text-slate-400">
+              <div className="text-purple-200/80">
                 Contenido basado en la Guía del CHUA (2019) · ISBN 978-84-09-11230-2 · En adaptación institucional
               </div>
             </div>
@@ -364,13 +364,13 @@ export const HomeView: React.FC<HomeViewProps> = ({
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={onOpenDocumentInfo}
-              className="px-3 py-1.5 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg transition-colors"
+              className="px-3 py-1.5 text-xs font-semibold text-purple-100 hover:text-white bg-purple-900 hover:bg-purple-800 rounded-lg transition-colors"
             >
               Control Documental
             </button>
             <button
               onClick={() => onTabChange('VALIDACION')}
-              className="px-3 py-1.5 text-xs font-semibold text-sky-300 hover:text-sky-200 bg-sky-950/80 border border-sky-800 rounded-lg transition-colors"
+              className="px-3 py-1.5 text-xs font-semibold text-purple-100 hover:text-white bg-purple-700/80 hover:bg-purple-600 border border-purple-500/60 rounded-lg transition-colors"
             >
               Revisión Farmacia (44)
             </button>
